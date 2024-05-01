@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/opplieam/greenlight/internal/data"
+	"github.com/opplieam/greenlight/internal/validator"
 	"net/http"
 	"time"
 )
@@ -19,6 +20,20 @@ func (app *application) createMovieHandler(w http.ResponseWriter, r *http.Reques
 		app.badRequestResponse(w, r, err)
 		return
 	}
+
+	movie := &data.Movie{
+		Title:   input.Title,
+		Year:    input.Year,
+		Runtime: input.Runtime,
+		Genres:  input.Genres,
+	}
+
+	v := validator.New()
+	if data.ValidateMovie(v, movie); !v.Valid() {
+		app.failedValidationResponse(w, r, v.Errors)
+		return
+	}
+
 	fmt.Fprintf(w, "%+v", input)
 }
 
@@ -33,7 +48,7 @@ func (app *application) showMovieHandler(w http.ResponseWriter, r *http.Request)
 		CreatedAt: time.Now(),
 		Title:     "Casablanca",
 		Runtime:   102,
-		Genre:     []string{"drama", "romance", "war"},
+		Genres:    []string{"drama", "romance", "war"},
 		Version:   1,
 	}
 	err = app.writeJSON(w, http.StatusOK, envelope{"movie": movie}, nil)
