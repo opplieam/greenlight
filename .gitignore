@@ -20,5 +20,9 @@
 # Go workspace file
 go.work
 
-IDE
+# IDE
 .idea
+
+# Environment and Postgres docker data
+.env
+.postgres-data
