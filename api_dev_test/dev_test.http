@@ -1,5 +1,15 @@
+###
 GET http://localhost:4000/v1/movies?page=100
 Accept: application/json
 
 ###
+POST localhost:4000/v1/users
+Content-Type: application/json
 
+{
+  "name": "Alice Smith",
+  "email": "alice@example.com",
+  "password": "pa55word"
+}
+
+###
