@@ -13,3 +13,12 @@ Content-Type: application/json
 }
 
 ###
+
+POST localhost:4000/v1/users
+Content-Type: application/json
+
+{
+  "name": "Bob2 Be",
+  "email": "bob2@example.com",
+  "password": "pa55word"
+}
