@@ -44,3 +44,21 @@ Content-Type: application/json
 GET localhost:4000/v1/healthcheck
 Content-Type: application/json
 Authorization: Bearer SBBYFBM53YSTD6VLERBG7Z3EAQ
+
+###
+GET localhost:4000/v1/movies/1
+Content-Type: application/json
+
+###
+POST localhost:4000/v1/tokens/authentication
+Content-Type: application/json
+
+{
+  "email": "alice@example.com",
+  "password": "pa55word"
+}
+
+###
+GET localhost:4000/v1/movies/1
+Content-Type: application/json
+Authorization: Bearer XHP2ERGFR73EHJYL6B43DAGABA
