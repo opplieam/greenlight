@@ -39,3 +39,8 @@ Content-Type: application/json
   "email": "bob5@example.com",
   "password": "pa55word"
 }
+
+###
+GET localhost:4000/v1/healthcheck
+Content-Type: application/json
+Authorization: Bearer SBBYFBM53YSTD6VLERBG7Z3EAQ
