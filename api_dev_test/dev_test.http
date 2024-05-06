@@ -18,7 +18,7 @@ POST localhost:4000/v1/users
 Content-Type: application/json
 
 {
-  "name": "Bob3 Be",
-  "email": "bob3@example.com",
+  "name": "Bob5 Be",
+  "email": "bob5@example.com",
   "password": "pa55word"
 }
