@@ -22,3 +22,11 @@ Content-Type: application/json
   "email": "bob5@example.com",
   "password": "pa55word"
 }
+
+###
+PUT localhost:4000/v1/users/activated
+Content-Type: application/json
+
+{
+  "token": "SEI367CH4KKWPFA3HOBLWNPXXQ"
+}
