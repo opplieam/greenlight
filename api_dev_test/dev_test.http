@@ -30,3 +30,12 @@ Content-Type: application/json
 {
   "token": "SEI367CH4KKWPFA3HOBLWNPXXQ"
 }
+
+###
+POST localhost:4000/v1/tokens/authentication
+Content-Type: application/json
+
+{
+  "email": "bob5@example.com",
+  "password": "pa55word"
+}
