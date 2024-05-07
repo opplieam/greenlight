@@ -4,18 +4,23 @@ import (
 	"context"
 	"database/sql"
 	"flag"
+	"fmt"
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 	"github.com/opplieam/greenlight/internal/data"
 	"github.com/opplieam/greenlight/internal/jsonlog"
 	"github.com/opplieam/greenlight/internal/mailer"
+	"github.com/opplieam/greenlight/internal/vcs"
 	"log"
 	"os"
 	"sync"
 	"time"
 )
 
-const version = "1.0.0"
+// const version = "1.0.0"
+var (
+	version = vcs.Version()
+)
 
 type config struct {
 	port int
@@ -76,7 +81,14 @@ func main() {
 	flag.StringVar(&cfg.smtp.username, "smtp-username", os.Getenv("SMTP_USERNAME"), "SMTP username")
 	flag.StringVar(&cfg.smtp.password, "smtp-password", os.Getenv("SMTP_PASSWORD"), "SMTP password")
 	flag.StringVar(&cfg.smtp.sender, "smtp-sender", "Greenlight <no-reply@greenlight.example.com>", "SMTP sender")
+
+	displayVersion := flag.Bool("version", false, "Display version and exit")
 	flag.Parse()
+
+	if *displayVersion {
+		fmt.Printf("Version:\t%s\n", version)
+		os.Exit(0)
+	}
 
 	//logger := log.New(os.Stdout, "", log.Ldate|log.Ltime)
 	logger := jsonlog.New(os.Stdout, jsonlog.LevelInfo)
